@@ -136,7 +136,7 @@ valid_examples = np.random.choice(valid_window, valid_size, replace=False)
 num_sampled = 64
 
 # Model Learning Rate
-learning_rate = 0.0001
+learning_rate = 0.001
 
 # How many words in vocab
 vocabulary_size = 2000
@@ -239,17 +239,17 @@ def plot_with_labels(low_dim_embs, labels):
 # * https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding
 # Dimensionality reduction to 2-D vectors (down from 150), this takes awhile.
 
-from sklearn.manifold import TSNE
-
-tsne = TSNE(perplexity=30, n_components=2, init='pca', n_iter=250)
-plot_only = 51
-low_dim_embs = tsne.fit_transform(final_embeddings[:plot_only, :])
-
-labels = [vocabulary[i] for i in range(plot_only)]
-
-plot_with_labels(low_dim_embs, labels)
-plt.xlim(-10, 10)
-plt.ylim(-10, 10)
-plt.show()
+# from sklearn.manifold import TSNE
+#
+# tsne = TSNE(perplexity=30, n_components=2, init='pca', n_iter=250)
+# plot_only = 51
+# low_dim_embs = tsne.fit_transform(final_embeddings[:plot_only, :])
+#
+# labels = [vocabulary[i] for i in range(plot_only)]
+#
+# plot_with_labels(low_dim_embs, labels)
+# plt.xlim(-10, 10)
+# plt.ylim(-10, 10)
+# plt.show()
 
 ## Great Job!

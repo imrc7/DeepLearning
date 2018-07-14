@@ -2,11 +2,11 @@
 from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
 
-
+# Mixing NIST datasets
 mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
 # Set parameters
-learning_rate = 0.1
+learning_rate = 0.015
 training_iteration = 10
 batch_size = 100
 display_step = 2
@@ -38,7 +38,7 @@ with tf.name_scope("cost_function") as scope:
     tf.summary.scalar("cost_function", cost_function)
 
 with tf.name_scope("train") as scope:
-    # Gradient descent
+    # Gradient descent optimiser (can also use adam optimizer)
     optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost_function)
 
 # Initializing the variables
