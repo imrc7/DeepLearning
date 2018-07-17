@@ -1,0 +1,1 @@
+I have found Ploarity dataset with Adam optimiser gives the most accuracy and minute loss. And for the plain text using RMS optimiser and reducing the number of epochs we get the best results for accuracy. So in conclusion using RMS optimiser with number of epochs gives the best result. And same hyper parameters with adam optimiesr also gives better results.
