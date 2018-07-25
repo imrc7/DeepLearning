@@ -2,7 +2,7 @@ import time
 
 start = int(round(time.time() * 1000))
 from tensorflow.examples.tutorials.mnist import input_data
-
+# mnist is a lightweight class which stores the training, validation, and testing sets as NumPy arrays
 mnist = input_data.read_data_sets('MNIST_data1', one_hot=True)
 import tensorflow as tf
 
