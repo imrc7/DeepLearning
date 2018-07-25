@@ -6,11 +6,20 @@ from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets('MNIST_data1', one_hot=True)
 import tensorflow as tf
 
+#use the convenient InteractiveSession class, which makes TensorFlow more flexible about how you structure your code.
+#It allows you to interleave operations which build a computation graph with ones that run the graph. 
+#This is particularly convenient when working in interactive contexts like IPython. If you are not using an InteractiveSession,
+#then you should build the entire computation graph before starting a session and launching the graph.
+
+
 sess = tf.InteractiveSession()
 x = tf.placeholder(tf.float32, shape=[None, 784])
 y_ = tf.placeholder(tf.float32, shape=[None, 10])
 sess.run(tf.global_variables_initializer())
 
+#Weight Initialization
+#To create this model, we're going to need to create a lot of weights and biases. 
+#One should generally initialize weights with a small amount of noise for symmetry breaking, and to prevent 0 gradients
 
 def weight_variable(shape):
     initial = tf.truncated_normal(shape, stddev=0.1)
@@ -21,6 +30,12 @@ def bias_variable(shape):
     initial = tf.constant(0.1, shape=shape)
     return tf.Variable(initial)
 
+#Convolution and Pooling
+#TensorFlow also gives us a lot of flexibility in convolution and pooling operations. 
+#How do we handle the boundaries? What is our stride size? In this example, we're always going to choose the vanilla version. 
+#ur convolutions uses a stride of one and are zero padded so that the output is the same size as the input. 
+#Our pooling is plain old max pooling over 2x2 blocks.
+#To keep our code cleaner, let's also abstract those operations into functions.
 
 def conv2d(x, W):
     return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
@@ -28,6 +43,8 @@ def conv2d(x, W):
 
 def max_pool_2x2(x):
     return tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
+
+
 
 
 W_conv1 = weight_variable([5, 5, 1, 16])
