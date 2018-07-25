@@ -47,7 +47,7 @@ def max_pool_2x2(x):
     return tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
 
 
-
+# First Convolutional Layer: It will consist of convolution, followed by max pooling
 
 W_conv1 = weight_variable([5, 5, 1, 16]) #5X5 patch size , 1 input channels, 16 output channels
 b_conv1 = bias_variable([16]) # bias vector for each output channel
